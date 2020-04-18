@@ -9,7 +9,7 @@ public class WelcomeController {
     private String message;
     @GetMapping(path = "/Hello")
     public String sayHello()  {
-         return "Hello message";
+         return "Hello Welocome";
     }
     @GetMapping("/")
     public String sayHelloFromParam(@Value("${welcome.message}") String message)  {
