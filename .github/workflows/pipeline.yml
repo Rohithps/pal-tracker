@@ -23,7 +23,6 @@ jobs:
       run: |
         mysql -uroot -proot < databases/tracker/create_databases.sql
         ./gradlew testMigrate
->>>>>>> 96c52f2... Add tests for persisting time entries in database
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish artifact
