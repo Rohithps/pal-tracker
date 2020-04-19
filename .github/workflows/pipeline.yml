@@ -13,10 +13,10 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-<<<<<<< HEAD
     - name: Make gradlew executable
       run: chmod +x ./gradlew
-=======
+    - name: Make database migrate executable
+      run: chmod +x scripts/migrate-databases.sh
     - name: Startup test database instance
       run: sudo service mysql start
     - name: Create test database
