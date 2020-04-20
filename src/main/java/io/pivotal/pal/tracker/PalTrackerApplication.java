@@ -26,7 +26,8 @@ public class PalTrackerApplication {
             return new InMemoryTimeEntryRepository();
         }
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUrl(getenv("SPRING_DATASOURCE_URL"));
+   //     dataSource.setUrl(getenv("SPRING_DATASOURCE_URL"));
+        dataSource.setUrl(System.getenv("SPRING_DATASOURCE_URL"));
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         return new JdbcTimeEntryRepository(dataSource);
     }
