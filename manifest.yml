@@ -5,7 +5,7 @@ applications:
     routes:
       - route: pal-tracker-rohith-ps.cfapps.io
     services:
-      - pal-tracker-db
+      - tracker-database-clearDB
     env:
       WELCOME_MESSAGE: Hello from the review environment
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
