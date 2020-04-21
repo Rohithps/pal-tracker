@@ -15,7 +15,7 @@ jobs:
         java-version: 11
     - name: Make gradlew executable
       run: chmod +x ./gradlew
-    - name: Startup MySQL Service
+    - name: Startup MySQLService
       run: |
         sudo /etc/init.d/mysql start
     - name: Startup test database instance
