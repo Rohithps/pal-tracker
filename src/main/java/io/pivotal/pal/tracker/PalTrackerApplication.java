@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
+import javax.sql.DataSource;
 import java.util.TimeZone;
 
 import static java.lang.System.getenv;
@@ -20,19 +21,23 @@ public class PalTrackerApplication {
     public static void main(String[] args) {
         SpringApplication.run(PalTrackerApplication.class, args);
     }
-    @Bean
+ /*   @Bean
     TimeEntryRepository timeEntryRepository() {
         if(getenv("ENV_NAME") != null && getenv("ENV_NAME").equalsIgnoreCase("test")) {
             return new InMemoryTimeEntryRepository();
         }
         MysqlDataSource dataSource = new MysqlDataSource();
-   //     dataSource.setUrl(getenv("SPRING_DATASOURCE_URL"));
+        dataSource.setUrl(getenv("SPRING_DATASOURCE_URL"));
         dataSource.setUrl(System.getenv("SPRING_DATASOURCE_URL"));
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         return new JdbcTimeEntryRepository(dataSource);
     }
-
+*/
     @Bean
+    TimeEntryRepository timeEntryRepository(DataSource dataSource) {
+        return new JdbcTimeEntryRepository(dataSource);
+    }
+   @Bean
     public ObjectMapper jsonObjectMapper() {
         return Jackson2ObjectMapperBuilder.json()
                 .serializationInclusion(JsonInclude.Include.NON_NULL) // Don’t include null values
